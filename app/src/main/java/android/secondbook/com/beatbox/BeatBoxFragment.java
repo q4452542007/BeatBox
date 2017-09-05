@@ -39,7 +39,7 @@ public class BeatBoxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beat_box, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.fragment_beat_box_recycler_view);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_beat_box_recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerView.setAdapter(new SoundAdapter(mBeatBox.getSounds()));
         return view;
@@ -58,7 +58,7 @@ public class BeatBoxFragment extends Fragment {
         public SoundHolder(LayoutInflater inflater, ViewGroup container) {
             super(inflater.inflate(R.layout.list_item_sound, container, false));
 
-            mButton = itemView.findViewById(R.id.list_item_sound_button);
+            mButton = (Button) itemView.findViewById(R.id.list_item_sound_button);
             mButton.setOnClickListener(this);
         }
 
@@ -69,6 +69,7 @@ public class BeatBoxFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
+
             mBeatBox.play(mSound);
         }
     }
@@ -78,6 +79,7 @@ public class BeatBoxFragment extends Fragment {
         private List<Sound> mSounds;
 
         public SoundAdapter(List<Sound> sounds) {
+
             mSounds = sounds;
         }
 
@@ -95,6 +97,7 @@ public class BeatBoxFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+
             return mSounds.size();
         }
     }
